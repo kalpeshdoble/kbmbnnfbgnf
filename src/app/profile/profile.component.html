@@ -1,0 +1,13 @@
+<div class="profile-container" *ngIf="user">
+  <h2 class="profile-heading">My Profile</h2>
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-image"></div>
+      <div class="profile-info">
+        <p><strong>Name:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Role:</strong> {{ user.role }}</p>
+      </div>
+    </div>
+  </div>
+</div>

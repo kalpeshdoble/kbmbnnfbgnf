@@ -1,0 +1,93 @@
+/* Container wrapping everything */
+.orders-container {
+  padding: 0 20px;
+  min-height: 100vh;
+  background-color: #f6f6f6;
+  font-family: 'Amazon Ember', sans-serif;
+}
+
+/* Title styling */
+.orders-title {
+  padding-top: 100px; /* adjust based on navbar height */
+  text-align: center;
+  font-size: 2.5rem;
+  color: #232f3e;
+  margin-bottom: 40px;
+}
+
+/* Each order card box */
+.order-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+/* Individual lines inside an order */
+.order-card p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Order items */
+.order-products {
+  border-top: 1px solid #ddd;
+  margin-top: 15px;
+  padding-top: 10px;
+}
+
+/* One row per product inside the order */
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+/* Total line */
+.order-total {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #111;
+}
+
+/* Empty order state */
+.no-orders {
+  height: calc(100vh - 120px); /* full screen minus navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.no-orders img {
+  width: 150px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+.no-orders p {
+  font-size: 1.3rem;
+  color: #555;
+}
+
+/* Responsive improvements */
+@media (max-width: 600px) {
+  .orders-title {
+    font-size: 2rem;
+    padding-top: 80px;
+  }
+
+  .order-card {
+    padding: 15px;
+  }
+
+  .product-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

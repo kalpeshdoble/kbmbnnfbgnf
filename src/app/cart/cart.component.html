@@ -1,0 +1,40 @@
+<div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
+  <div class="cart-item" *ngFor="let item of cartItems">
+    <img [src]="item.imgUrl || 'https://via.placeholder.com/100x100'" alt="{{ item.productName }}" class="item-img" />
+
+    <div class="item-details">
+      <h3>{{ item.productName }}</h3>
+      <p>Price: ₹{{ item.priceSnapshot }}</p>
+      <p>Quantity: {{ item.quantity }}</p>
+    </div>
+
+    <div class="item-actions">
+      <button (click)="decrease(item)" class="qty-btn">-</button>
+      <button (click)="increase(item)" class="qty-btn">+</button>
+      <button (click)="removeFromCart(item.id)" class="remove-btn">Remove</button>
+    </div>
+  </div>
+
+ <div class="checkout-summary">
+  <div class="summary-info">
+    <p><strong>Total Quantity:</strong> {{ getTotalQuantity() }}</p>
+    <p><strong>Total Price:</strong> ₹{{ total }}</p>
+  </div>
+
+  <div class="checkout-actions">
+    <button class="checkout-btn" (click)="placeOrder('COD')">Cash On Delivery</button>
+    <button class="checkout-btn wallet" (click)="placeOrder('WALLET')">Wallet Payment</button>
+  </div>
+</div>
+
+
+
+</div>
+
+<ng-template #emptyCart>
+  <div class="empty-cart">
+    <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart" class="empty-cart-img" />
+    <p>Your cart is empty.</p>
+  </div>
+</ng-template>
+

@@ -1,0 +1,56 @@
+<!-- Category Filter -->
+<div class="category-bar">
+  <button 
+    *ngFor="let category of categories"
+    (click)="selectCategory(category)"
+    [class.selected]="category === selectedCategory">
+    {{ category }}
+  </button>
+</div>
+
+<!-- Search Bar -->
+<div class="search-bar">
+  <input
+    type="text"
+    name="searchTerm"
+    placeholder="Search products by name..."
+    [(ngModel)]="searchTerm"
+    (keyup.enter)="searchByName()" />
+  <button (click)="searchByName()">Search</button>
+</div>
+
+<!-- Product Grid -->
+<div 
+  class="product-grid" 
+  [ngClass]="{ 'single-item': products.length === 1 }"
+>
+  <div *ngFor="let product of products" class="product-card" (click)="toggleProduct(product.id)">
+    <img 
+      [src]="product.imgUrl || 'https://via.placeholder.com/200x150'" 
+      alt="{{ product.name }}" 
+    />
+
+    <h3>{{ product.name }}</h3>
+    <p class="category">{{ product.category }}</p>
+
+    <!-- Show description & stock only if this product is expanded -->
+    <ng-container *ngIf="expandedProductId === product.id">
+      <p class="description">{{ product.description }}</p>
+
+      <p>
+        <strong>Stock:</strong>
+        <span [ngClass]="{ 'in-stock': product.stock > 0, 'out-of-stock': product.stock <= 0 }">
+          {{ product.stock > 0 ? product.stock + ' available' : 'Out of Stock' }}
+        </span>
+      </p>
+    </ng-container>
+
+    <p><strong>Price:</strong> ₹{{ product.price }}</p>
+
+    <button 
+      (click)="addToCart(product); $event.stopPropagation()" 
+      [disabled]="product.stock <= 0"
+    >
+      Add to Cart
+    </button>
+  </div>

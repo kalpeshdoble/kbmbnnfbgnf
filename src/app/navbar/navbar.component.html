@@ -1,0 +1,15 @@
+<nav>
+  <div>
+    <a routerLink="/dashboard">Home</a>
+    <a routerLink="/cart">Cart</a>
+    <a routerLink="/my-orders">Orders</a>
+    <a routerLink="/wallet" *ngIf="isLoggedIn()">Wallet</a>
+    <a routerLink="/profile" *ngIf="isLoggedIn()">Profile</a>
+    <a routerLink="/register" *ngIf="!isLoggedIn()">Register</a>
+  </div>
+
+  <div>
+    <button *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+    <a *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
+  </div>
+</nav>

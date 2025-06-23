@@ -1,0 +1,43 @@
+<div class="wallet-container">
+  <h2 class="wallet-title">My Wallet</h2>
+
+  <div class="wallet-balance-card">
+    <h3>Current Balance</h3>
+    <p class="balance-amount">₹{{ balance }}</p>
+  </div>
+
+  <div class="wallet-input">
+    <input type="number" [(ngModel)]="amount" placeholder="Enter amount" />
+    <button (click)="addMoney()" class="btn add">Add Money</button>
+    <button (click)="withdrawMoney()" class="btn withdraw">Withdraw</button>
+  </div>
+
+  <div *ngIf="transactions.length > 0; else noTransactions" class="transactions-section">
+    <h4>Transaction History</h4>
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tx of transactions">
+          <td>{{ tx.date | date: 'short' }}</td>
+          <td>{{ tx.transactionType }}</td>
+          <td [ngClass]="{ 'credit': tx.transactionType === 'CREDIT', 'debit': tx.transactionType === 'DEBIT' }">
+            ₹{{ tx.amount }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noTransactions>
+    <div class="no-transactions">
+      <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No Transactions" />
+      <p>No transactions yet.</p>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h2>Add Shipping Address</h2>
+  <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+  <label for="userEmail" class="form-label">Email</label>
+  <input
+    type="email"
+    id="userEmail"
+    class="form-control"
+    formControlName="userEmail" />
+  <div class="text-danger" *ngIf="addressForm.get('userEmail')?.invalid && addressForm.get('userEmail')?.touched">
+    Enter a valid email.
+  </div>
+</div>
+    <div *ngFor="let field of ['fullName','mobileNumber','flatNumber','city','pincode','state']">
+      <label [for]="field">{{ field | titlecase }}</label>
+      <input
+        [type]="field==='mobileNumber'||field==='pincode'?'text':'text'"
+        [formControlName]="field"
+        class="form-control mb-2"
+        [id]="field" />
+      <small class="text-danger" *ngIf="addressForm.get(field)?.invalid && addressForm.get(field)?.touched">
+        Invalid {{ field }}
+      </small>
+    </div>
+
+    <button class="btn btn-success mt-3" type="submit" [disabled]="addressForm.invalid">Save Address</button>
+  </form>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+</div>

@@ -1,0 +1,41 @@
+
+nav {
+  background-color: #2c3e50;
+   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+
+  position: fixed;       /* Fixes the navbar */
+  top: 0;                /* Sticks it to the top */
+  left: 0;
+  right: 0;
+  z-index: 1000;         /* Ensures it's above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* Optional: adds shadow for depth */
+}
+
+nav div {
+  display: flex;
+  gap: 24px;
+}
+
+nav a, nav button {
+  color: #ffffff;
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+   margin-right: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover, nav button:hover {
+  color: #00d1b2;
+}
+
+nav button {
+  padding: 0;
+}
